@@ -9,13 +9,12 @@ This is my first ever attempt to implement any React (or any modern frontend) ap
 - I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is and available in the commit history
 - There was no time for other algorithmic attempts, so I went and reused OpenAI for that as well. That's where it's helpful to limit the amount of categories
 - Obviously, I had to hack around the CORS issue with the Google taxonomy file. In the real world, it should be read, processed and cached server-side
-- 
 
 ## How to use
 
 ### Prerequisites
-- Node.js (v18+ recommended)
-- npm or yarn
+- git
+- npm
 - An OpenAI API key ([get one here](https://platform.openai.com/))
 
 ### Installation
