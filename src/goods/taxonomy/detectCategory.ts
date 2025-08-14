@@ -17,7 +17,7 @@ type CategoryCandidate = {
     depth: number;
 };
 
-let possibleCategoriesCache: Map<number, CategoryCandidate>|undefined;
+let possibleCategoriesCache: Map<number, CategoryCandidate> | undefined;
 
 const getPossibleCategories = async (): Promise<Map<number, CategoryCandidate>> => {
     if (undefined !== possibleCategoriesCache) {
@@ -61,13 +61,13 @@ const parseTaxonomyText = (taxonomyText: string): CategoryCandidate[] => {
         }
 
         const leaf = segments[segments.length - 1];
-        entries.push({id: +id, path, leaf, depth: segments.length });
+        entries.push({id: +id, path, leaf, depth: segments.length});
     }
     return entries;
 }
 
 
-export const detectCategory = async (itemName: string): Promise<Category|undefined> => {
+export const detectCategory = async (itemName: string): Promise<Category | undefined> => {
     const candidates = await getPossibleCategories();
     const candidatesTsv = [...candidates.values()].map(e => `${e.id}\t${e.path}`).join("\n");
 
