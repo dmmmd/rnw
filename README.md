@@ -20,7 +20,7 @@ This is my first ever attempt to implement any React (or any modern frontend) ap
 ### Installation
 1. Clone the repo:
    ```sh
-   git clone git@github.com:dmmmd/rnw.git
+   git clone git@github.com:dmmmd/rnw.git recommmerce-ai-helper 
    cd recommmerce-ai-helper
    ```
 2. Install dependencies:
