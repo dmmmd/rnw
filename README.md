@@ -6,7 +6,7 @@ This is my first ever attempt to implement any React (or any modern frontend) ap
 - As a first-time React user, it's impossible for me to even fake any mastery with it, so I have only focused on making it work
 - In a similar vein, I decided to implement the functional requirements first, and all the rest later. Functionally it mostly works -- it does generate the sales pitch and picks the category. The quality of both features is low
 - The business code is slapped together very quickly, naming, code locations are all over the place
-- I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is and available in the commit history
+- I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is available in the commit history
 - There was no time for other algorithmic attempts, so I went and reused OpenAI for that as well. That's where it's helpful to limit the amount of categories
 - Obviously, I had to hack around the CORS issue with the Google taxonomy file. In the real world, it should be read, processed and cached server-side
 
