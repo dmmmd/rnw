@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 export interface AIPrompt {
     get prompt(): string;
 }

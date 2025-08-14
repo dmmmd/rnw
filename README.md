@@ -1,16 +1,17 @@
 # Recommerce AI Helper
 
 A minimalist React app to help you generate compelling marketplace listings and select the best category for your item using OpenAI's GPT API.
+This is my first ever attempt to implement any React (or any modern frontend) application. As such, in order to stay within the time limits for the prototype, I have made the following decisions:
+- Use AI to suggest how to begin, it pointed me towards the Vite tool. I doubt that I need it for the real product, but it helped me with a skeleton
+- As a first-time React user, it's impossible for me to even fake any mastery with it, so I have only focused on making it work
+- In a similar vein, I decided to implement the functional requirements first, and all the rest later. Functionally it mostly works -- it does generate the sales pitch and picks the category. The quality of both features is low
+- The business code is slapped together very quickly, naming, code locations are all over the place
+- I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is and available in the commit history
+- There was no time for other algorithmic attempts, so I went and reused OpenAI for that as well. That's where it's helpful to limit the amount of categories
+- Obviously, I had to hack around the CORS issue with the Google taxonomy file. In the real world, it should be read, processed and cached server-side
+- 
 
-## Features
-- Accessible, minimalist UI
-- Form for item details (name, condition, notes)
-- AI-generated marketing text and category suggestion
-- Uses a subset of Google product taxonomy categories
-- Error handling and accessibility best practices
-- Easy to extend and customize
-
-## Getting Started
+## How to use
 
 ### Prerequisites
 - Node.js (v18+ recommended)
@@ -20,47 +21,51 @@ A minimalist React app to help you generate compelling marketplace listings and 
 ### Installation
 1. Clone the repo:
    ```sh
-   git clone <your-repo-url>
+   git clone git@github.com:dmmmd/rnw.git
    cd recommmerce-ai-helper
    ```
 2. Install dependencies:
    ```sh
    npm install
-   # or
-   yarn install
    ```
-3. Create a `.env` file in the project root (see example below).
-4. Start the dev server:
-   ```sh
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-### Example .env file
+3. Create a `.env` file in the project root, paste an OpenAI key:
 ```
 VITE_OPENAI_API_KEY=sk-...
 ```
+4. Start the dev server:
+   ```sh
+   npm run dev
+   ```
+5. Open browser: http://localhost:5173/
 
-## Security Note
-**Never expose your OpenAI API key in client-side code for production!**
-- For production, set up a backend proxy to securely handle API requests.
-- The current setup is for local development and demo purposes only.
+## Todos
 
-## Design Choices
-- Custom CSS for performance and simplicity
-- All form fields have labels and focus states for accessibility
-- AI prompt is engineered to request both marketing text and category in JSON format
-- Only categories from the allowed subset are accepted
+Strict time constraints were placed for this attempt, so the result is certainly of a prototype quality, lots of shortcuts taken.
+What I should do during next steps:
 
-## Extending
-- To use a different AI model, update the API call in `src/App.tsx`
-- To change categories, edit the `CATEGORIES` array in `src/App.tsx`
-- To add more fields, extend the form and prompt logic
+### Server-side API
+- One or two endpoints to generate the listing, instead of using the AI directly
+- Naturally, it would also hide the API key from the client
+- Fetch, parse and store the Google product categories in some database, maintain it automatically
+- Find an existing, or implement a better solution for detecting a category
+- Sanitise user input in effort to reduce costs and avoid abuse
+- Introduce some rate limiting and/or other measures to limit the costs
+- Some layer of caching the user input to avoid using the AI. Cache should be smart enough to understand similar matches, not just exact
+- Autocomplete in the input field could be helpful for the user AND for our caching efforts
 
-## Testing
-- Add unit tests for prompt generation in `src/pitchGenerator.ts`
+As part of it, clearly the whole `/ai` namespace goes server-side, so does most of the `/goods`.
 
-## License
-MIT
-
+### Quality
+- Pick and use a testing framework, cover all the business logic and hopefully the UI
+- Introduce real logging, both for server and client side, with results ending up in some Kibana
+- Introduce real error handling. It includes specific error classes for important cases, so that they can be tracked easily
+- Error handling must log, but not show the technical messages and details to the user. Public UI must translate everything into user-friendly simple messages
+- Current prototype is very optimistic, real code cannot expect the correct returns or input, so I must handle that
+- I would maybe let players teach our system when suggested categories are bad -- let them pick from several options
+- In the same spirit -- we should use our own accumulated data from previously published positions and use the categories and/or pitches from there
+ 
+### Clean up and refactor
+- Remove some possibly unnecessary Vite template files
+- Read about the React practices and likely split the App.tsx into some components
+- Use some UX framework instead of my custom css files
+- Rename and move the business logic around, I don't like the current naming, nor their locations

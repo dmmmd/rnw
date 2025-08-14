@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 import {type Category, createCategory} from "./Category.ts";
 import {getAIProvider} from "../../ai/providers/aiProviderManager.ts";
 import {createSimpleAIPrompt} from "../../ai/providers/aiProvider.ts";

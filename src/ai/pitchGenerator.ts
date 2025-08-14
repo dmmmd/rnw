@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 import type {UserItem} from "../goods/UserItem.ts";
 
 export const generateSalesPitchPrompt = (item: UserItem): string => {

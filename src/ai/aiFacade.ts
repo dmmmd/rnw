@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 import type {UserItem} from "../goods/UserItem.ts";
 import {createSimpleAIPrompt} from "./providers/aiProvider.ts";
 import {generateSalesPitchPrompt} from "./pitchGenerator.ts";

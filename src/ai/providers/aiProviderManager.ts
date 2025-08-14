@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 import type {AIProvider} from "./aiProvider.ts";
 import {createOpenAIProvider} from "./openai/openAIProvider.ts";
 

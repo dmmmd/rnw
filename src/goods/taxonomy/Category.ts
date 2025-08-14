@@ -1,3 +1,5 @@
+// This could be client-side
+
 export interface Category {
     id: number;
     path: string;

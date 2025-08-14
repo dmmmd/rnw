@@ -1,3 +1,5 @@
+// All of this should be server-side
+
 import type {AIPrompt, AIProvider} from "../aiProvider.ts";
 
 class OpenAIProvider implements AIProvider {

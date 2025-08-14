@@ -39,14 +39,14 @@ function App() {
 
     async function generatePitch(userItem: UserItem) {
         setPitch('');
-        const salesPitch = await generateSalesPitch(userItem);
+        const salesPitch = await generateSalesPitch(userItem); // This function would call our server-side API
         setPitch(salesPitch);
     }
 
     async function suggestCategory(userItem: UserItem) {
         setCategory('');
         const safeName = userItem.name.substring(0, 255); // @todo we should do a lot more, and on the server-side, obviously
-        const category = await detectCategory(safeName);
+        const category = await detectCategory(safeName); // This function would call our server-side API
         setCategory(category.path);
     }
 
@@ -80,7 +80,7 @@ function App() {
                     rows={3}
                 />
                 <button type="submit" disabled={loading}>
-                    {loading ? 'Generating...' : 'Generate a sales ad'}
+                    {loading ? 'Just a second, generating...' : 'Generate a marketplace listing'}
                 </button>
             </form>
             {error && <div role="alert" style={{color: 'red'}}>{error}</div>}
