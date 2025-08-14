@@ -1,7 +1,7 @@
 export interface Category {
     id: number;
     path: string;
-};
+}
 
 class SimpleCategory implements Category {
     private readonly id: number;

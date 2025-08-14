@@ -45,7 +45,8 @@ function App() {
 
     async function suggestCategory(userItem: UserItem) {
         setCategory('');
-        const category = await detectCategory(userItem.name);
+        const safeName = userItem.name.substring(0, 255); // @todo we should do a lot more, and on the server-side, obviously
+        const category = await detectCategory(safeName);
         setCategory(category.path);
     }
 
