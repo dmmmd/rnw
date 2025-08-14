@@ -46,8 +46,12 @@ function App() {
     async function suggestCategory(userItem: UserItem) {
         setCategory('');
         const safeName = userItem.name.substring(0, 255); // @todo we should do a lot more, and on the server-side, obviously
-        const category = await detectCategory(safeName); // This function would call our server-side API
-        setCategory(category.path);
+        const categoryCandidate = await detectCategory(safeName); // This function would call our server-side API
+        if (!categoryCandidate) {
+            throw Error('No Category Found');
+        }
+
+        setCategory(categoryCandidate.path);
     }
 
     return (
