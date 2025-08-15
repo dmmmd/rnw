@@ -8,6 +8,7 @@ This is my first ever attempt to implement any React (or any modern frontend) ap
 - The business code is slapped together very quickly, naming, code locations are all over the place
 - I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is available in the commit history
 - There was no time for other algorithmic attempts, so I went and reused OpenAI for that as well. That's where it's helpful to limit the amount of categories
+- Judging by a quick research, a realistic categorisation solution might be in using theOpenAI embeddings in combination with vector search server-side
 - Obviously, I had to hack around the CORS issue with the Google taxonomy file. In the real world, it should be read, processed and cached server-side
 
 ## How to use
@@ -42,11 +43,18 @@ VITE_OPENAI_API_KEY=sk-...
 Strict time constraints were placed for this attempt, so the result is certainly of a prototype quality, lots of shortcuts taken.
 What I should do during next steps:
 
+### Better AI use
+- Pick the best model for the purpose https://platform.openai.com/docs/models
+- Prompt engineering: split the instructions between the appropriate roles https://platform.openai.com/docs/guides/text#message-roles-and-instruction-following
+- Use the embeddings to store the taxonomy nodes https://platform.openai.com/docs/guides/embeddings https://platform.openai.com/docs/guides/embeddings#use-cases
+- Use the SDK
+- Use the structured output https://platform.openai.com/docs/guides/structured-outputs?lang=javascript
+
 ### Server-side API
 - One or two endpoints to generate the listing, instead of using the AI directly
 - Naturally, it would also hide the API key from the client
 - Fetch, parse and store the Google product categories in some database, maintain it automatically
-- Find an existing, or implement a better solution for detecting a category
+- Use pgvector to store and search the taxonomy vectors from OpenAI embeddings
 - Sanitise user input in effort to reduce costs and avoid abuse
 - Introduce some rate limiting and/or other measures to limit the costs
 - Some layer of caching the user input to avoid using the AI. Cache should be smart enough to understand similar matches, not just exact
