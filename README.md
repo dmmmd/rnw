@@ -8,7 +8,7 @@ This is my first ever attempt to implement any React (or any modern frontend) ap
 - The business code is slapped together very quickly, naming, code locations are all over the place
 - I have googled the categorisation problem very-very quickly, and also used the AI coding assistant to generate a local matcher. It ran, but produced completely irrelevant outcomes. It is available in the commit history
 - There was no time for other algorithmic attempts, so I went and reused OpenAI for that as well. That's where it's helpful to limit the amount of categories
-- Judging by a quick research, a realistic categorisation solution might be in using theOpenAI embeddings in combination with vector search server-side
+- Judging by a quick research, a realistic categorisation solution will be in using the OpenAI embeddings in combination with vector search server-side, combined with preparing the categories data a bit
 - Obviously, I had to hack around the CORS issue with the Google taxonomy file. In the real world, it should be read, processed and cached server-side
 
 ## How to use
@@ -46,7 +46,7 @@ What I should do during next steps:
 ### Better AI use
 - Pick the best model for the purpose https://platform.openai.com/docs/models
 - Prompt engineering: split the instructions between the appropriate roles https://platform.openai.com/docs/guides/text#message-roles-and-instruction-following
-- Use the embeddings to store the taxonomy nodes https://platform.openai.com/docs/guides/embeddings https://platform.openai.com/docs/guides/embeddings#use-cases
+- Use the embeddings to store the preprocessed taxonomy nodes https://platform.openai.com/docs/guides/embeddings https://platform.openai.com/docs/guides/embeddings#use-cases
 - Use the SDK
 - Use the structured output https://platform.openai.com/docs/guides/structured-outputs?lang=javascript
 
